@@ -16,7 +16,7 @@ class Preguntas(models.Model):
     update_user = models.ForeignKey(User, related_name="pregunta_update_user")
 
     def __unicode__(self):
-        return "%s" % (self.pregunta)
+        return "%s" % (self.text)
 
     @property
     def respuestas_validas(self):
@@ -26,9 +26,9 @@ class RespuestasValidas(models.Model):
     pregunta = models.ForeignKey(Preguntas, on_delete=models.CASCADE)
     text = models.CharField(max_length=200)
     create_date = models.DateTimeField("Fecha Publicacion", auto_now_add=True)
-    create_user = models.ForeignKey(User, related_name="pregunta_create_user")
+    create_user = models.ForeignKey(User, related_name="respuesta_create_user")
     update_date = models.DateTimeField("Fecha Actualizacion", auto_now_add=True)
-    update_user = models.ForeignKey(User, related_name="pregunta_update_user")
+    update_user = models.ForeignKey(User, related_name="respuesta_update_user")
 
     class Meta:
         unique_together = ('pregunta','text')
