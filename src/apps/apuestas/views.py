@@ -8,7 +8,7 @@ from .forms import PreguntaForm
 from .models import Preguntas
 
 
-def index(request):
+def apuestas_list(request):
     form = PreguntaForm()
     if request.method == 'POST':
         form = PreguntaForm(data=request.POST)
@@ -17,7 +17,7 @@ def index(request):
             pregunta.create_user = request.user
             pregunta.update_user = request.user
             pregunta.save()
-    template = loader.get_template('index.html')
+    template = loader.get_template('apuestas_list.html')
     pregunta_list = Preguntas.objects.all()
     context = {
         'username': request.user.username,
