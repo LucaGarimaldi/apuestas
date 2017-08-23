@@ -22,4 +22,8 @@ class PreguntasAdmin(admin.ModelAdmin):
     actions = [add_simbol_text,]
 
 admin.site.register(Preguntas, PreguntasAdmin)
-admin.site.register(RespuestasValidas)
+
+class RespuestaValidasAdmin(admin.ModelAdmin):
+    list_display = ('id', 'pregunta', 'text')
+
+admin.site.register(RespuestasValidas, RespuestaValidasAdmin)
