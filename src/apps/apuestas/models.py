@@ -20,6 +20,13 @@ class Preguntas(models.Model):
     def respuestas_validas(self):
         return RespuestasValidas.objects.filter(pregunta=self)
 
+    def get_result(self):
+        respuestas_validas = self.respuestas_validas
+        dic = []
+        for x in respuestas_validas:
+            dic.append((x.text, Apuestas.objects.filter(respuesta_valida=x).count()))
+        return dic
+
 class RespuestasValidas(models.Model):
     pregunta = models.ForeignKey(Preguntas, on_delete=models.CASCADE)
     text = models.CharField(max_length=200)
@@ -32,7 +39,7 @@ class RespuestasValidas(models.Model):
         unique_together = ('pregunta','text')
 
     def __unicode__(self):
-        return "%s" % (self.pregunta)
+        return "%s" % (self.text)
 
 class Apuestas(models.Model):
     pregunta = models.ForeignKey(Preguntas, blank=True, null=True)

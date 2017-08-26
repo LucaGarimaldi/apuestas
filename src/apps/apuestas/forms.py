@@ -50,6 +50,6 @@ class ApuestaForm(forms.ModelForm):
 
     def clean_respuesta_valida(self):
         if Apuestas.objects.filter(pregunta=self.pregunta, user=self.user).exists():
-            raise form.ValidationError('Ya hiciste esta apuesta.')
+            raise forms.ValidationError('Ya hiciste esta apuesta.')
         else:
             return self.cleaned_data['respuesta_valida']

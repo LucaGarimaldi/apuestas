@@ -13,7 +13,7 @@ from .models import Preguntas
 @login_required
 def apuestas_list(request):
     template = loader.get_template('apuestas_list.html')
-    pregunta_list = Pregunta.objects.all()
+    pregunta_list = Preguntas.objects.all()
     context = {
         'username': request.user.username,
         'pregunta_list': pregunta_list
@@ -49,10 +49,10 @@ class PreguntaView(LoginRequiredMixin, View):
 @login_required
 def apuesta(request, id_pregunta):
     template = loader.get_template('apuesta.html')
-    pregunta = Pregunta.objects.get(pk=id_pregunta)
-    form = ApuestasForm(pregunta, request.user)
+    pregunta = Preguntas.objects.get(pk=id_pregunta)
+    form = ApuestaForm(pregunta, request.user)
     if request.method == 'POST':
-        form = ApuestasForm(pregunta, request.user, data=request.POST)
+        form = ApuestaForm(pregunta, request.user, data=request.POST)
         if form.is_valid():
             respuesta_apuesta = form.save(commit=False)
             respuesta_apuesta.user = request.user
