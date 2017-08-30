@@ -11,6 +11,7 @@
         <a class="nav-item nav-link" href="#">{{ request.user }}</a>
       {% else %}
         <a class="nav-item nav-link" href="/accounts/login/">Login</a>
+        <a class="nav-item nav-link" href="javascript: open_modal_register()">Register</a>
       {% endif %}
 
       {% comment %}

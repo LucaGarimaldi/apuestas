@@ -8,7 +8,6 @@ from django.shortcuts import render
 from django.template import loader
 
 
-
 def register_user(request):
     template = loader.get_template('registration/register.html')
     form = UserCreationForm()
