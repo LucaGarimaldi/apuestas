@@ -10,14 +10,22 @@ function cancel_modal_register(){
 }
 
 function send_register_form(){
-  $('#id_form_register')
+  $.each('.is-invalid', function(index, objects_i){
+      $('#id_' + objects_i[0].removeClass('is-invalid'));
+  })
   $.ajax({
     type: "POST",
     url: $('#id_form_register').attr('action'),
     data: $('#id_form_register').serialize(),
     success: function(response){
-      alert(response)
+      if (response.status == 'ok'){
+        alert('Congratulaciones')
+      }
+      else{
+        $.each(response.errors, function(index, objects_i){
+            $('#id_' + objects_i[0].addClass('is-invalid'));
+        })
+      }
     }
-
   })
 }

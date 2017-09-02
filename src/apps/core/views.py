@@ -7,6 +7,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
 
+from functions import json_response
+
 
 def register_user(request):
     template = loader.get_template('registration/register.html')
@@ -19,6 +21,11 @@ def register_user(request):
             grupo_jugador = Group.objects.get(name='Jugador')
             user.save()
             user.groups.add(grupo_jugador)
+            response = json_response().response_ok()
+        else:
+            response = json_response().response_error_form(form)
+        return response
+
     context = {
         'form': form
     }
