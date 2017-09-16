@@ -41,6 +41,10 @@ class RespuestasValidas(models.Model):
     def __unicode__(self):
         return "%s" % (self.text)
 
+    @property
+    def pregunta_text(self):
+        return self.pregunta.text
+
 class Apuestas(models.Model):
     pregunta = models.ForeignKey(Preguntas, blank=True, null=True)
     respuesta_valida = models.ForeignKey(RespuestasValidas)

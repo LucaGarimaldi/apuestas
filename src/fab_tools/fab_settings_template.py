@@ -24,6 +24,6 @@ PATH_VENV = {
 }
 
 PATH_VENV_ACTIVATE = {
-    'test': PATH_VENV['test'] + '/bin/activate',
-    'prod': PATH_VENV['prod'] + '/bin/activate',
+    'test': 'source ' + PATH_VENV['test'] + '/bin/activate',
+    'prod': 'source ' + PATH_VENV['prod'] + '/bin/activate',
 }

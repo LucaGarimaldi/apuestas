@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('apuestas', '0001_initial'),
+        ('game', '0001_initial'),
     ]
 
     operations = [
@@ -35,12 +35,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='apuestas',
             name='pregunta',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='apuestas.Preguntas'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='game.Preguntas'),
         ),
         migrations.AddField(
             model_name='apuestas',
             name='respuesta_valida',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='apuestas.RespuestasValidas'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='game.RespuestasValidas'),
         ),
         migrations.AddField(
             model_name='apuestas',
