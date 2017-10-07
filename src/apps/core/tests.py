@@ -3,4 +3,11 @@ from __future__ import unicode_literals
 
 from django.test import TestCase
 
-# Create your tests here.
+
+class register_test(TestCase):
+
+    def test_resultado_correcto(self):
+        a = 2 + 1
+
+    def test_resultado_erroneo(self):
+        a = b + 2
